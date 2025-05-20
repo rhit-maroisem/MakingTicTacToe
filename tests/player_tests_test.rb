@@ -24,5 +24,10 @@ class PlayerTestsTest < Minitest::Test
     assert_equal "O", player2.get_marker
   end
 
+  def test_place_on_board
+    #mock board
+    player1 = Player.new("X")
+  end
+
 
 end
