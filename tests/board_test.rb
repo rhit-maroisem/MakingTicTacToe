@@ -39,4 +39,19 @@ class BoardTest < Minitest::Test
     board.place_marker("X",0,0)
     assert_equal("X", board.get_rep[0][0])
   end
+
+  def test_place_marker_invalid
+    ui = Ui.new
+    board = Board.new(ui, 3)
+    assert_equal("", board.get_rep[0][0])
+    board.place_marker("X",0,0)
+    err = assert_raises RuntimeError do
+      board.place_marker("O",0,0)
+    end
+    assert_equal("Cannot place O in non-empty space", err.to_s)
+    err = assert_raises RuntimeError do
+      board.place_marker("X",0,0)
+    end
+    assert_equal("Cannot place X in non-empty space", err.to_s)
+  end
 end

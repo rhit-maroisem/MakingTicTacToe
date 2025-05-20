@@ -16,7 +16,11 @@ class Board
   end
 
   def place_marker(symbol, row, col)
+    if @board_rep[row][col] != ""
+      raise RuntimeError.new("Cannot place " + symbol + " in non-empty space")
+    else
     @board_rep[row][col] = symbol
+    end
   end
 
 end
