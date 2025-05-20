@@ -25,84 +25,43 @@ class Board
 
 
   def is_game_over?
-    scan_row_for_win || scan_col_for_win || scan_diag_for_win
+    scan_lines_for_win(row_coords) ||
+      scan_lines_for_win(col_coords) ||
+      scan_lines_for_win(diag_coords)
   end
 
-  private def scan_row_for_win
-    (0...@board_size).each { |i|
-      symbol_changed = false
-      scan_symbol = @board_rep[i][0]
-      if scan_symbol == ""
-        return false
-      end
-      (0...@board_size).each { |j|
-        if @board_rep[i][j] != scan_symbol
-          symbol_changed = true
-        end
-      }
-      unless symbol_changed
-        return true
-      end
-    }
-    false
-  end
+  private
 
-  private def scan_col_for_win
-    (0...@board_size).each { |i|
-      symbol_changed = false
-      scan_symbol = @board_rep[0][i]
-      if scan_symbol == ""
-        return false
-      end
-      (0...@board_size).each { |j|
-        if @board_rep[j][i] != scan_symbol
-          symbol_changed = true
-        end
-      }
-      unless symbol_changed
-        return true
-      end
-    }
-    false
-  end
-
-  private def scan_diag_for_win
-    #descending
-    symbol_changed = false
-    scan_symbol = @board_rep[0][0]
-    (0...@board_size).each { |i|
-      if scan_symbol == ""
-        symbol_changed = true
-        break
-      end
-
-      if @board_rep[i][i] != scan_symbol
-        symbol_changed = true
-      end
-
-
-    }
-    unless symbol_changed
-      return true
+  # @note
+  # The lines below were refactored by chatGPT to reduce duplicate code.
+  # As I am new to ruby, I wasn't aware an approach like this could be taken,
+  # but this seems quite elegant
+  def scan_lines_for_win(lines)
+    lines.any? do |coords|
+      symbols = coords.map { |i, j| @board_rep[i][j] } # makes an array of all the symbols in that line
+       symbols.uniq.size == 1 && symbols.first != ""  # returns true if the whole line is all the same, and non-empty
     end
-
-    #ascending
-    symbol_changed = false
-    scan_symbol = @board_rep[@board_size-1][0]
-    (0...@board_size).each { |i|
-      if scan_symbol == ""
-        return false
-      end
-
-      if @board_rep[i][@board_size-1-i] != scan_symbol
-        symbol_changed = true
-      end
-
-    }
-    unless symbol_changed
-      return true
-    end
-     false
   end
+
+  # Build coordinate sets for each scan
+  def row_coords
+    (0...@board_size).map do |i|
+      (0...@board_size).map { |j| [i, j] }
+    end
+  end
+
+  def col_coords
+    (0...@board_size).map do |j|
+      (0...@board_size).map { |i| [i, j] }
+    end
+  end
+
+  def diag_coords
+    [
+      (0...@board_size).map { |i| [i, i] },                                # Top-left to bottom-right
+      (0...@board_size).map { |i| [@board_size - 1 - i, i] }              # Bottom-left to top-right
+    ]
+  end
+
 
 end
