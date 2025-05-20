@@ -15,4 +15,8 @@ class Board
     @board_rep
   end
 
+  def place_marker(symbol, row, col)
+    @board_rep[row][col] = symbol
+  end
+
 end

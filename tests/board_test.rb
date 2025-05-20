@@ -31,4 +31,12 @@ class BoardTest < Minitest::Test
     rep_array.each {|arr| arr.all? {|entry| assert_equal("",entry)} }
 
   end
+
+  def test_place_marker_valid
+    ui = Ui.new
+    board = Board.new(ui, 3)
+    assert_equal("", board.get_rep[0][0])
+    board.place_marker("X",0,0)
+    assert_equal("X", board.get_rep[0][0])
+  end
 end
