@@ -25,7 +25,7 @@ class Board
 
 
   def is_game_over?
-    scan_row_for_win || scan_col_for_win
+    scan_row_for_win || scan_col_for_win || scan_diag_for_win
   end
 
   private def scan_row_for_win
@@ -40,11 +40,11 @@ class Board
           symbol_changed = true
         end
       }
-      if symbol_changed == false
+      unless symbol_changed
         return true
       end
     }
-    return false
+    false
   end
 
   private def scan_col_for_win
@@ -59,11 +59,50 @@ class Board
           symbol_changed = true
         end
       }
-      if symbol_changed == false
+      unless symbol_changed
         return true
       end
     }
-    return false
+    false
+  end
+
+  private def scan_diag_for_win
+    #descending
+    symbol_changed = false
+    scan_symbol = @board_rep[0][0]
+    (0...@board_size).each { |i|
+      if scan_symbol == ""
+        symbol_changed = true
+        break
+      end
+
+      if @board_rep[i][i] != scan_symbol
+        symbol_changed = true
+      end
+
+
+    }
+    unless symbol_changed
+      return true
+    end
+
+    #ascending
+    symbol_changed = false
+    scan_symbol = @board_rep[@board_size-1][0]
+    (0...@board_size).each { |i|
+      if scan_symbol == ""
+        return false
+      end
+
+      if @board_rep[i][@board_size-1-i] != scan_symbol
+        symbol_changed = true
+      end
+
+    }
+    unless symbol_changed
+      return true
+    end
+     false
   end
 
 end

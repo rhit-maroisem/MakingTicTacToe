@@ -97,5 +97,27 @@ class BoardTest < Minitest::Test
     assert_equal(false, board.is_game_over?)
   end
 
+  def test_player_won_diagonal_desc
+    ui = Ui.new
+    board = Board.new(ui, 3)
+    board.place_marker("X",0,0)
+    board.place_marker("X",1,1)
+    board.place_marker("X",2,1)
+    assert_equal(false, board.is_game_over?)
+    board.place_marker("X",2,2)
+    assert_equal(true, board.is_game_over?)
+  end
+
+  def test_player_won_diagonal_asc
+    ui = Ui.new
+    board = Board.new(ui, 3)
+    board.place_marker("X",0,2)
+    board.place_marker("X",1,1)
+    board.place_marker("X",1,0)
+    assert_equal(false, board.is_game_over?)
+    board.place_marker("X",2,0)
+    assert_equal(true, board.is_game_over?)
+  end
+
 
 end
