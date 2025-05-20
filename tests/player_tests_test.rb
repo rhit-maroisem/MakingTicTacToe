@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
+require 'test_helper'
 require './lib/player'
+
 
 class PlayerTestsTest < Minitest::Test
   def setup

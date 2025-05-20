@@ -12,8 +12,21 @@
     </content>
     <orderEntry type="jdk" jdkName="ruby-3.4.3-p32" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.3, ruby-3.4.3-p32) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.7, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.6.2, ruby-3.4.3-p32) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, ruby-3.4.3-p32) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.5, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutant (v0.13.1, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutant-minitest (v0.13.1, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutant-rspec (v0.13.1, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.3.0, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.8.0, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.10.0, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.13.3, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.3, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sorbet-runtime (v0.5.12117, ruby-3.4.3-p32) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unparser (v0.7.0, ruby-3.4.3-p32) [gem]" level="application" />
   </component>
 </module>

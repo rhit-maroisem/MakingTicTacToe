@@ -5,7 +5,7 @@ class Ui
 
   end
 
-  def print(boardRep){
+  def print(board_rep){
 
   }
   end

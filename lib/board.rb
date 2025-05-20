@@ -23,4 +23,27 @@ class Board
     end
   end
 
+  def is_game_over?
+    return scan_row_for_win
+  end
+
+  private def scan_row_for_win
+    (0...@board_size).each { |i|
+      symbol_changed = false
+      scan_symbol = @board_rep[i][0]
+      if scan_symbol == ""
+        return false
+      end
+      (0...@board_size).each { |j|
+        if @board_rep[i][j] != scan_symbol
+          symbol_changed = true
+        end
+      }
+      if symbol_changed == false
+        return true
+      end
+    }
+    return false
+  end
+
 end
