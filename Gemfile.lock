@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    logger (1.7.0)
+    minitest (5.25.5)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  logger (~> 1.7)
+  minitest (~> 5.25)
+
+BUNDLED WITH
+   2.6.7
