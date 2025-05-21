@@ -5,7 +5,16 @@ class Ui
 
   end
 
-  def print(board_rep){
+  def ask_to_place(mock_board)
+
+  end
+
+  def game_over(symbol)
+
+  end
+
+  private def print_board(board_rep){
+
 
   }
   end

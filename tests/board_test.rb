@@ -5,6 +5,7 @@ require 'ui'
 require 'board'
 
 class BoardTest < Minitest::Test
+
   def setup
     # Do nothing
   end
@@ -25,25 +26,33 @@ class BoardTest < Minitest::Test
     ui = Ui.new
     board = Board.new(ui, 3)
     assert_equal(3, board.get_size)
-    rep_array = board.get_rep
-    assert_equal(3, rep_array.length)
-    assert_equal(3, rep_array[0].length)
-    rep_array.each {|arr| arr.all? {|entry| assert_equal("",entry)} }
+    for i in 0...3 do
+      for j in 0...3 do
+        assert_equal("", board.get_square(i,j))
+      end
+    end
 
   end
+
+  def test_get_square_init
+    ui = Ui.new
+    board = Board.new(ui, 3)
+    assert_equal("",board.get_square(0,0))
+  end
+
 
   def test_place_marker_valid
     ui = Ui.new
     board = Board.new(ui, 3)
-    assert_equal("", board.get_rep[0][0])
+    assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
-    assert_equal("X", board.get_rep[0][0])
+    assert_equal("X", board.get_square(0,0))
   end
 
   def test_place_marker_invalid
     ui = Ui.new
     board = Board.new(ui, 3)
-    assert_equal("", board.get_rep[0][0])
+    assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
     err = assert_raises RuntimeError do
       board.place_marker("O",0,0)
@@ -54,6 +63,7 @@ class BoardTest < Minitest::Test
     end
     assert_equal("Cannot place X in non-empty space", err.to_s)
   end
+
 
   def test_player_won_horizontal
     ui = Ui.new

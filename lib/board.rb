@@ -11,8 +11,8 @@ class Board
     @board_size
   end
 
-  def get_rep
-    @board_rep
+  def get_square(row,col)
+    @board_rep[row][col]
   end
 
   def place_marker(symbol, row, col)
@@ -31,7 +31,6 @@ class Board
   end
 
   private
-
   # @note
   # The lines below were refactored by chatGPT to reduce duplicate code.
   # As I am new to ruby, I wasn't aware an approach like this could be taken,
