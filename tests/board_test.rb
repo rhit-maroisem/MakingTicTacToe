@@ -16,15 +16,15 @@ class BoardTest < Minitest::Test
 
   def test_board_init
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     assert_equal(3, board.get_size)
-    board2 = Board.new(ui, 4)
+    board2 = Board.new(4)
     assert_equal(4, board2.get_size)
   end
 
   def test_board_rep_init
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     assert_equal(3, board.get_size)
     for i in 0...3 do
       for j in 0...3 do
@@ -36,14 +36,14 @@ class BoardTest < Minitest::Test
 
   def test_get_square_init
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new( 3)
     assert_equal("",board.get_square(0,0))
   end
 
 
   def test_place_marker_valid
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new( 3)
     assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
     assert_equal("X", board.get_square(0,0))
@@ -51,7 +51,7 @@ class BoardTest < Minitest::Test
 
   def test_place_marker_invalid
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
     err = assert_raises RuntimeError do
@@ -67,7 +67,7 @@ class BoardTest < Minitest::Test
 
   def test_player_won_horizontal
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",0,1)
     board.place_marker("X",1,2)
@@ -78,7 +78,7 @@ class BoardTest < Minitest::Test
 
   def test_player_no_win_horizontal
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("O",0,1)
     assert_equal(false, board.is_game_over?)
@@ -88,7 +88,7 @@ class BoardTest < Minitest::Test
 
   def test_player_won_vertical
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",1,0)
     board.place_marker("X",1,1)
@@ -99,7 +99,7 @@ class BoardTest < Minitest::Test
 
   def test_player_no_win_vertical
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("0",1,0)
     assert_equal(false, board.is_game_over?)
@@ -109,7 +109,7 @@ class BoardTest < Minitest::Test
 
   def test_player_won_diagonal_desc
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",1,1)
     board.place_marker("X",2,1)
@@ -120,7 +120,7 @@ class BoardTest < Minitest::Test
 
   def test_player_won_diagonal_asc
     ui = Ui.new
-    board = Board.new(ui, 3)
+    board = Board.new(3)
     board.place_marker("X",0,2)
     board.place_marker("X",1,1)
     board.place_marker("X",1,0)

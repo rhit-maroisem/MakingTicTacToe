@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Board
-  def initialize(ui, board_size)
-    @ui = ui
+  def initialize( board_size)
     @board_size = board_size
     @board_rep = Array.new(board_size) {Array.new(board_size) {""}}
   end
