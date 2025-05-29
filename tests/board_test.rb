@@ -129,6 +129,14 @@ class BoardTest < Minitest::Test
     assert_equal(true,board.is_full?)
   end
 
+  def test_is_board_full_false
+    board = Board.new(3)
+
+    board.place_marker("X",0,0)
+
+    assert_equal(false,board.is_full?)
+  end
+
 
 
 end

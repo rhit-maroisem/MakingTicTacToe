@@ -30,7 +30,7 @@ class Board
   end
 
   def is_full?
-    true
+    !@board_rep.any? { |row| row.any? { |col| col == "" } }
   end
 
   private
