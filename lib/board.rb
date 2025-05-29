@@ -29,7 +29,7 @@ class Board
       scan_lines_for_win(diag_coords)
   end
 
-  def is_full?
+  def is_board_full?
     !@board_rep.any? { |row| row.any? { |col| col == "" } }
   end
 

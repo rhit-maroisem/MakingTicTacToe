@@ -126,7 +126,7 @@ class BoardTest < Minitest::Test
       }
     }
 
-    assert_equal(true,board.is_full?)
+    assert_equal(true,board.is_board_full?)
   end
 
   def test_is_board_full_false
@@ -134,7 +134,7 @@ class BoardTest < Minitest::Test
 
     board.place_marker("X",0,0)
 
-    assert_equal(false,board.is_full?)
+    assert_equal(false,board.is_board_full?)
   end
 
 
