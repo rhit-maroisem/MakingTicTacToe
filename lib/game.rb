@@ -20,6 +20,10 @@ class Game
         @ui.game_over(@player1.get_marker)
         break
       end
+      if check_for_draw
+        @ui.game_draw
+        break
+      end
       take_turn(@player2)
       if check_for_win
         @ui.game_over(@player1.get_marker)
@@ -35,5 +39,10 @@ class Game
   private def check_for_win
     @board.is_game_over?
   end
+
+  private def check_for_draw
+    @board.is_board_full?
+  end
+
 
 end

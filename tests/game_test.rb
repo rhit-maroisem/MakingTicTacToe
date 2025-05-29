@@ -54,12 +54,14 @@ class GameTest < Minitest::Test
 
     mock_p1.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
 
     mock_p2.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
 
     mock_p1.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
 
     mock_p2.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
@@ -92,21 +94,37 @@ class GameTest < Minitest::Test
 
     mock_p1.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
 
     mock_p2.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
 
     mock_p1.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
 
     mock_p2.expect(:place_on_board,true)
     mock_board.expect(:is_game_over?, false)
 
     mock_p1.expect(:place_on_board,true)
-    mock_board.expect(:is_game_over?, true)
+    mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
 
-    mock_p1.expect(:get_marker,"X")
-    mock_ui.expect(:game_over,true,["X"])
+    mock_p2.expect(:place_on_board,true)
+    mock_board.expect(:is_game_over?, false)
+
+    mock_p1.expect(:place_on_board,true)
+    mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, false)
+
+    mock_p2.expect(:place_on_board,true)
+    mock_board.expect(:is_game_over?, false)
+
+    mock_p1.expect(:place_on_board,true)
+    mock_board.expect(:is_game_over?, false)
+    mock_board.expect(:is_board_full?, true)
+
+    mock_ui.expect(:game_draw,true)
 
     game.game_loop
 

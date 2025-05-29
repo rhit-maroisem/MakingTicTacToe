@@ -31,6 +31,10 @@ class Ui
     puts "The " + symbol.to_s + "player has won the game!"
   end
 
+  def game_draw
+    puts "The game ended in a tie"
+  end
+
   def start_game(symbol1, symbol2)
     puts "Tic Tac Toe has Started! Player 1 is " + symbol1.to_s + " and Player 2 is " + symbol2.to_s
   end
