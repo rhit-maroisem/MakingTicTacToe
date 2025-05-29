@@ -15,7 +15,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_init
-    ui = Ui.new
     board = Board.new(3)
     assert_equal(3, board.get_size)
     board2 = Board.new(4)
@@ -23,7 +22,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_rep_init
-    ui = Ui.new
     board = Board.new(3)
     assert_equal(3, board.get_size)
     for i in 0...3 do
@@ -35,14 +33,12 @@ class BoardTest < Minitest::Test
   end
 
   def test_get_square_init
-    ui = Ui.new
     board = Board.new( 3)
     assert_equal("",board.get_square(0,0))
   end
 
 
   def test_place_marker_valid
-    ui = Ui.new
     board = Board.new( 3)
     assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
@@ -50,7 +46,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_place_marker_invalid
-    ui = Ui.new
     board = Board.new(3)
     assert_equal("", board.get_square(0,0))
     board.place_marker("X",0,0)
@@ -66,7 +61,6 @@ class BoardTest < Minitest::Test
 
 
   def test_player_won_horizontal
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",0,1)
@@ -77,7 +71,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_player_no_win_horizontal
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("O",0,1)
@@ -87,7 +80,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_player_won_vertical
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",1,0)
@@ -98,7 +90,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_player_no_win_vertical
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("0",1,0)
@@ -108,7 +99,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_player_won_diagonal_desc
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,0)
     board.place_marker("X",1,1)
@@ -119,7 +109,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_player_won_diagonal_asc
-    ui = Ui.new
     board = Board.new(3)
     board.place_marker("X",0,2)
     board.place_marker("X",1,1)
@@ -128,6 +117,18 @@ class BoardTest < Minitest::Test
     board.place_marker("X",2,0)
     assert_equal(true, board.is_game_over?)
   end
+
+  def test_is_board_full_true
+    board = Board.new(3)
+    (0...3).each { |i|
+      (0...3).each { |j|
+        board.place_marker("X", i, j)
+      }
+    }
+
+    assert_equal(true,board.is_full?)
+  end
+
 
 
 end

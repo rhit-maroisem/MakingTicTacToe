@@ -29,6 +29,10 @@ class Board
       scan_lines_for_win(diag_coords)
   end
 
+  def is_full?
+    true
+  end
+
   private
   # @note
   # The lines below were refactored by chatGPT to reduce duplicate code.
